@@ -1,0 +1,29 @@
+.gridContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 640px;
+    margin: 0px auto 0px auto;
+}
+
+.col{
+    background-color: magenta;
+    flex: 1;
+    height: 36px;
+    border: solid 2px black;
+}
+
+.line{
+    display: flex;
+    flex: 1;
+    width: 640px;
+}
+
+.activeCol{
+    background-color: black;
+}
+
+.clear{
+    margin: 20px auto 0px auto;
+    display: flex;
+}
