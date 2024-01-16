@@ -3,6 +3,15 @@
     justify-content: center;
 }
 
+.container{
+    display: flex;
+    width: 66.5%;
+}
+
+.gridContainer, .buttonContainer{
+    flex: 1;
+}
+
 .gridContainer{
     display: flex;
     flex-direction: column;
@@ -28,16 +37,33 @@
     background-color: black;
 }
 
-.eraser{
-    margin: 20px auto 0px auto;
+.buttonContainer{
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 100px auto 100px auto;
+}
+
+.eraser,.clear{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: 0px auto 0px auto;
+    border: solid 1px black;
+    border-radius: 0;
+    font-size: xx-large;
 }
 
 .activeEraser{
     background-color: #848785;
 }
 
+.eraser{
+    margin-top: 150px;
+}
+
 .clear{
-    margin: 20px auto 0px auto;
-    display: flex;
+    margin-bottom: 150px;
 }
