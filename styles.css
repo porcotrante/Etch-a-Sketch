@@ -1,3 +1,8 @@
+.header{
+    display: flex;
+    justify-content: center;
+}
+
 .gridContainer{
     display: flex;
     flex-direction: column;
@@ -21,6 +26,15 @@
 
 .activeCol{
     background-color: black;
+}
+
+.eraser{
+    margin: 20px auto 0px auto;
+    display: flex;
+}
+
+.activeEraser{
+    background-color: #848785;
 }
 
 .clear{

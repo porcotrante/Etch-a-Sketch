@@ -20,6 +20,21 @@ for (let i = 0; i < 16; i++) {
 
 let paint = false;
 
+let erase = false;
+
+const eraser = document.querySelector('.eraser');
+
+eraser.addEventListener('click', () =>{
+    if (erase == true) {
+        erase = false;
+        eraser.classList.toggle("activeEraser");
+    }
+    else{
+        erase = true;
+        eraser.classList.toggle("activeEraser");
+    }
+})
+
 for (let index = 0; index < 256; index++) {
     const square = document.getElementById(index)
 
@@ -32,13 +47,23 @@ for (let index = 0; index < 256; index++) {
     })
 
     square.addEventListener("mousemove", () =>{
-        if (paint) {
+        if (erase && paint) {
+            square.classList.remove('activeCol');
+        }
+
+        else if (paint) {
         square.classList.add('activeCol');
         }
     })
 
     square.addEventListener("click", () =>{
-        square.classList.add('activeCol');
+        if (erase) {
+            square.classList.remove('activeCol');
+        }
+
+        else{
+            square.classList.add('activeCol');
+        }
     })
 }
 
