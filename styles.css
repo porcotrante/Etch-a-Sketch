@@ -1,6 +1,9 @@
+section{
+    all: unset;
+}
+
 .header{
-    display: flex;
-    justify-content: center;
+    text-align: center;
 }
 
 .container{
@@ -21,7 +24,7 @@
 }
 
 .col{
-    background-color: magenta;
+    background-color: white;
     flex: 1;
     height: 36px;
     border: solid 2px black;
@@ -33,8 +36,30 @@
     width: 640px;
 }
 
-.activeCol{
-    background-color: black;
+.colorToggle{
+    background-color: #d4d4d4;
+    flex: 2;
+    border: 1px solid black;
+    margin: 0px auto 0px auto;
+    width: 70%;
+}
+
+.colorHeader{
+    text-align: center;
+}
+
+li{
+    display: flex;
+    margin: 2em 0 2em 0;
+}
+
+input{
+    margin: 0px;
+    margin-left: 15px;
+}
+
+.colorValue{
+    margin-left: 2em;
 }
 
 .buttonContainer{
@@ -54,6 +79,7 @@
     border: solid 1px black;
     border-radius: 0;
     font-size: xx-large;
+    background-color: #d4d4d4;
 }
 
 .activeEraser{

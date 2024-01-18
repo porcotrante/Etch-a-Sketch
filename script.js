@@ -1,7 +1,32 @@
+//getting the buttons and inputs
 const cont = document.querySelector(".gridContainer");
 
+const eraser = document.querySelector('.eraser');
+
+const clear = document.querySelector('.clear');
+
+const red = document.querySelector('.red');
+
+const green = document.querySelector('.green');
+
+const blue = document.querySelector('.blue');
+
+const colorValues = document.querySelectorAll('.colorValue');
+
+let redValue;
+
+let greenValue;
+
+let blueValue;
+
+//setting up auxiliary variables
 let ID = 0;
 
+let paint = false;
+
+let erase = false;
+
+//Creating the grid
 for (let i = 0; i < 16; i++) {
     const line = document.createElement("div");
     line.classList.add('line');
@@ -18,12 +43,7 @@ for (let i = 0; i < 16; i++) {
     cont.appendChild(line);
 }
 
-let paint = false;
-
-let erase = false;
-
-const eraser = document.querySelector('.eraser');
-
+//Implementing the eraser button
 eraser.addEventListener('click', () =>{
     if (erase == true) {
         erase = false;
@@ -35,6 +55,52 @@ eraser.addEventListener('click', () =>{
     }
 })
 
+redValue = colorValues[0].textContent = parseInt(red.value).toString(16); //the value of the display of red slider
+greenValue = colorValues[1].textContent = parseInt(green.value).toString(16); //the value of the display of green slider
+blueValue = colorValues[2].textContent = parseInt(blue.value).toString(16); //the value of the display of blue slider
+
+//adding the padding needed for hexadecimal code
+if (redValue.length < 2) {
+    redValue = "0" + redValue;
+}
+
+if (greenValue.length < 2) {
+    greenValue = "0" + greenValue;
+}
+
+if (blueValue.length < 2) {
+    blueValue = "0" + blueValue;
+}
+
+//implementing the responsive color sliders
+red.addEventListener('input', () =>{
+    redValue = colorValues[0].textContent = parseInt(red.value).toString(16);
+
+    if (redValue.length < 2) {
+        redValue = "0" + redValue;
+    }
+})
+
+green.addEventListener('input', () =>{
+    greenValue = colorValues[1].textContent = parseInt(green.value).toString(16);
+
+    if (greenValue.length < 2) {
+        greenValue = "0" + greenValue;
+    }
+})
+
+blue.addEventListener('input', () =>{
+    blueValue = colorValues[2].textContent = parseInt(blue.value).toString(16);
+
+    if (blueValue.length < 2) {
+        blueValue = "0" + blueValue;
+    }
+})
+
+
+console.log(redValue+"\n"+greenValue+"\n"+blueValue);
+
+//implementing the paint and eraser mechanic
 for (let index = 0; index < 256; index++) {
     const square = document.getElementById(index)
 
@@ -48,31 +114,34 @@ for (let index = 0; index < 256; index++) {
 
     square.addEventListener("mousemove", () =>{
         if (erase && paint) {
-            square.classList.remove('activeCol');
+            square.style.backgroundColor = "white";
         }
 
         else if (paint) {
-        square.classList.add('activeCol');
+            square.style.backgroundColor = '#' + redValue
+            + greenValue
+            + blueValue;
         }
     })
 
     square.addEventListener("click", () =>{
         if (erase) {
-            square.classList.remove('activeCol');
+            square.style.backgroundColor = "white";
         }
 
         else{
-            square.classList.add('activeCol');
+            square.style.backgroundColor = '#' + redValue
+            + greenValue
+            + blueValue;
         }
     })
 }
 
-const clear = document.querySelector('.clear');
-
+//implementing the clear mechanic
 clear.addEventListener('click', () =>{
     const grid = document.querySelectorAll(".col");
 
     grid.forEach(element => {
-        element.classList.remove('activeCol');
+        element.style.backgroundColor = "white";
     });
 })
