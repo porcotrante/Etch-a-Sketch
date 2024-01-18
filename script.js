@@ -13,6 +13,7 @@ const blue = document.querySelector('.blue');
 
 const colorValues = document.querySelectorAll('.colorValue');
 
+const display = document.querySelector('.display');
 let redValue;
 
 let greenValue;
@@ -55,9 +56,9 @@ eraser.addEventListener('click', () =>{
     }
 })
 
-redValue = colorValues[0].textContent = parseInt(red.value).toString(16); //the value of the display of red slider
-greenValue = colorValues[1].textContent = parseInt(green.value).toString(16); //the value of the display of green slider
-blueValue = colorValues[2].textContent = parseInt(blue.value).toString(16); //the value of the display of blue slider
+redValue = colorValues[0].textContent = parseInt(red.value).toString(16); //the value of the red slider
+greenValue = colorValues[1].textContent = parseInt(green.value).toString(16); //the value of the green slider
+blueValue = colorValues[2].textContent = parseInt(blue.value).toString(16); //the value of the blue slider
 
 //adding the padding needed for hexadecimal code
 if (redValue.length < 2) {
@@ -72,6 +73,11 @@ if (blueValue.length < 2) {
     blueValue = "0" + blueValue;
 }
 
+//changing the display color
+display.style.backgroundColor = '#' + redValue
+                                +greenValue
+                                +blueValue;
+
 //implementing the responsive color sliders
 red.addEventListener('input', () =>{
     redValue = colorValues[0].textContent = parseInt(red.value).toString(16);
@@ -79,6 +85,10 @@ red.addEventListener('input', () =>{
     if (redValue.length < 2) {
         redValue = "0" + redValue;
     }
+
+    display.style.backgroundColor = '#' + redValue
+                                        +greenValue
+                                        +blueValue;
 })
 
 green.addEventListener('input', () =>{
@@ -87,6 +97,10 @@ green.addEventListener('input', () =>{
     if (greenValue.length < 2) {
         greenValue = "0" + greenValue;
     }
+
+    display.style.backgroundColor = '#' + redValue
+                                        +greenValue
+                                        +blueValue;
 })
 
 blue.addEventListener('input', () =>{
@@ -95,10 +109,11 @@ blue.addEventListener('input', () =>{
     if (blueValue.length < 2) {
         blueValue = "0" + blueValue;
     }
+
+    display.style.backgroundColor = '#' + redValue
+                                        +greenValue
+                                        +blueValue;
 })
-
-
-console.log(redValue+"\n"+greenValue+"\n"+blueValue);
 
 //implementing the paint and eraser mechanic
 for (let index = 0; index < 256; index++) {
@@ -114,25 +129,25 @@ for (let index = 0; index < 256; index++) {
 
     square.addEventListener("mousemove", () =>{
         if (erase && paint) {
-            square.style.backgroundColor = "white";
+            square.style.backgroundColor = "#d4d4d4";
         }
 
         else if (paint) {
             square.style.backgroundColor = '#' + redValue
-            + greenValue
-            + blueValue;
+                                                + greenValue
+                                                + blueValue;
         }
     })
 
     square.addEventListener("click", () =>{
         if (erase) {
-            square.style.backgroundColor = "white";
+            square.style.backgroundColor = "#d4d4d4";
         }
 
         else{
             square.style.backgroundColor = '#' + redValue
-            + greenValue
-            + blueValue;
+                                                + greenValue
+                                                + blueValue;
         }
     })
 }
@@ -142,6 +157,6 @@ clear.addEventListener('click', () =>{
     const grid = document.querySelectorAll(".col");
 
     grid.forEach(element => {
-        element.style.backgroundColor = "white";
+        element.style.backgroundColor = "#d4d4d4";
     });
 })

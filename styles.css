@@ -1,4 +1,4 @@
-section{
+section, ul{
     all: unset;
 }
 
@@ -24,7 +24,7 @@ section{
 }
 
 .col{
-    background-color: white;
+    background-color: #d4d4d4;
     flex: 1;
     height: 36px;
     border: solid 2px black;
@@ -41,16 +41,28 @@ section{
     flex: 2;
     border: 1px solid black;
     margin: 0px auto 0px auto;
-    width: 70%;
+    width: 80%;
 }
 
 .colorHeader{
     text-align: center;
 }
 
+.colorContainer{
+    display: flex;
+}
+
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 60%;
+}
+
 li{
     display: flex;
-    margin: 2em 0 2em 0;
+    margin: 1em 0 1em 0;
 }
 
 input{
@@ -60,6 +72,13 @@ input{
 
 .colorValue{
     margin-left: 2em;
+}
+
+.display{
+    flex: 1;
+    height: 6em;
+    margin: auto 3.18178125em auto 3.18178125em;
+    border: 1px solid black;
 }
 
 .buttonContainer{
