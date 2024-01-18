@@ -14,6 +14,9 @@ const blue = document.querySelector('.blue');
 const colorValues = document.querySelectorAll('.colorValue');
 
 const display = document.querySelector('.display');
+
+const resizeApply = document.querySelector('.resizeApply');
+
 let redValue;
 
 let greenValue;
@@ -117,7 +120,7 @@ blue.addEventListener('input', () =>{
 
 //implementing the paint and eraser mechanic
 for (let index = 0; index < 256; index++) {
-    const square = document.getElementById(index)
+    const square = document.getElementById(index);
 
     square.addEventListener("mousedown", () =>{
         paint = true;
@@ -151,6 +154,77 @@ for (let index = 0; index < 256; index++) {
         }
     })
 }
+
+//implementeing the resize mechanic
+resizeApply.addEventListener('click', () =>{
+    const resizeValue = Number(document.querySelector('.resize').value);
+
+    if (resizeValue != NaN && resizeValue > 0 && resizeValue < 101) {
+        //removing the existent grid
+        while (cont.firstChild) {
+            cont.removeChild(cont.lastChild);
+    }
+
+    //making a new resized grid
+    ID = 0;
+
+        for (let i = 0; i < resizeValue; i++) {
+            const line = document.createElement("div");
+            line.classList.add('line');
+        
+            for (let j = 0; j < resizeValue; j++) {
+                const column = document.createElement("div");
+                column.classList.add('col');
+                column.setAttribute('id',ID);
+                ID ++;
+        
+                line.appendChild(column);
+            }
+        
+            cont.appendChild(line);
+        }
+
+        for (let index = 0; index < ID; index++) {
+            const square = document.getElementById(index);
+        
+            square.addEventListener("mousedown", () =>{
+                paint = true;
+            })
+        
+            square.addEventListener('mouseup', () =>{
+                paint = false;
+            })
+        
+            square.addEventListener("mousemove", () =>{
+                if (erase && paint) {
+                    square.style.backgroundColor = "#d4d4d4";
+                }
+        
+                else if (paint) {
+                    square.style.backgroundColor = '#' + redValue
+                                                        + greenValue
+                                                        + blueValue;
+                }
+            })
+        
+            square.addEventListener("click", () =>{
+                if (erase) {
+                    square.style.backgroundColor = "#d4d4d4";
+                }
+        
+                else{
+                    square.style.backgroundColor = '#' + redValue
+                                                        + greenValue
+                                                        + blueValue;
+                }
+            })
+        }
+    }
+
+    else {
+        alert("Not a valid input");
+    }
+})
 
 //implementing the clear mechanic
 clear.addEventListener('click', () =>{

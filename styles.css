@@ -26,8 +26,7 @@ section, ul{
 .col{
     background-color: #d4d4d4;
     flex: 1;
-    height: 36px;
-    border: solid 2px black;
+    border: solid 1px black;
 }
 
 .line{
@@ -44,12 +43,12 @@ section, ul{
     width: 80%;
 }
 
-.colorHeader{
-    text-align: center;
-}
-
 .colorContainer{
     display: flex;
+}
+
+h3{
+    text-align: center;
 }
 
 ul{
@@ -106,9 +105,29 @@ input{
 }
 
 .eraser{
-    margin-top: 150px;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .clear{
     margin-bottom: 150px;
+}
+
+.resizeSection{
+    flex: 2;
+    background-color: #d4d4d4;
+    width: 60%;
+    margin: 7em auto 0 auto;
+    border: 1px solid black;
+    padding-bottom: 1em;
+}
+
+.resizeContainer{
+    display: flex;
+    justify-content: center;
+}
+
+.resize{
+    width: 20%;
+    margin-right: 2em;
 }
