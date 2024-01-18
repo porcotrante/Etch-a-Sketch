@@ -81,7 +81,7 @@ display.style.backgroundColor = '#' + redValue
                                 +greenValue
                                 +blueValue;
 
-//implementing the responsive color sliders
+//making it change with every input of the slider
 red.addEventListener('input', () =>{
     redValue = colorValues[0].textContent = parseInt(red.value).toString(16);
 
@@ -165,7 +165,7 @@ resizeApply.addEventListener('click', () =>{
             cont.removeChild(cont.lastChild);
     }
 
-    //making a new resized grid
+    //making a new resized grid and adding the painting function again
     ID = 0;
 
         for (let i = 0; i < resizeValue; i++) {
